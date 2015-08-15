@@ -21,4 +21,4 @@ You can enable the debug flag to analyze the messages exchanged on the network.
 $ node app.js
 ```
 
-By default, each family of messages are sent into specific MQTT topics (alarm, sensor ...)
+By default, each family of messages are sent into specific MQTT topics (alarm, sensor ...).
