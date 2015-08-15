@@ -20,19 +20,11 @@ function Module(path) {
 	// Package that describes this module
 	this.pjson = require(path + '/package.json');
 	
-        // Share Configuration file
-        this.gconfig = require('../config');
-
-	// The logger for this module
-	this.logger = require('./logger').getLogger(this.pjson.name, this.gconfig.debug);
+	// Package that describes this module
+	this.config = require(path + '/config');
 	
-	try {
-		// Package that describes this module
-		this.config = require(path + '/config');
-		
-	} catch (ex) {
-		this.logger.warn("No config file found for module : " + this.pjson.name);
-	}
+	// The logger for this module
+	this.logger = require('./logger').getLogger(this.pjson.name, this.config.debug);
 
 	// The MQTT Client
 	this.client = null;
@@ -47,8 +39,8 @@ Module.prototype = {
 		console.info("-> Starting %s v%s", this.pjson.name, this.pjson.version);
 		
 		// Create an MQTT client
-		this.client = mqtt.connect(this.gconfig.mqtt.uri, this.gconfig.mqtt.options);
-		console.info("Connecting to the MQTT Server : %s", this.gconfig.mqtt.uri);
+		this.client = mqtt.connect(this.config.mqtt.uri, this.config.mqtt.options);
+		console.info("Connecting to the MQTT Server : %s", this.config.mqtt.uri);
 		
 		// MQTT Connection
 		this.client.on('connect', function(){
