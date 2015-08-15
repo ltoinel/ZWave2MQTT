@@ -1,4 +1,4 @@
-![DomoGeeek](./assets/img/logo.jpg "Domogeek")
+![DomoGeeek](https://github.com/ltoinel/DomoGeeek/raw/master/static/img/logo.jpg "Domogeek")
 
 This module is a gateway between Z-Wave devices and the MQTT broker and takes part from the DomoGeeek project.
 
