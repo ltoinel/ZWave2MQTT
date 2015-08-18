@@ -1,7 +1,7 @@
 {
   "name": "zwave2mqtt",
   "version": "1.0.0",
-  "description": "The ZWave2MQTT application provides a gateway between the MQTT broker and the Z-Wave network",
+  "description": "The ZWave2MQTT application provides a gateway between the MQTT bus and a Z-Wave network",
   "main": "app.js",
   "homepage": "https://github.com/ltoinel/ZWave2MQTT",
   "keywords": [
@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-	    "openzwave": "git://github.com/jperkin/node-openzwave.git#master",
+	    "openzwave": "git://github.com/ltoinel/node-openzwave.git#master",
 	    "bunyan": "^1.3.4",
 	    "mqtt": "^1.3.1"
   },

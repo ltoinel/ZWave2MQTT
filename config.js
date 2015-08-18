@@ -2,7 +2,7 @@
  * DomoGeeek v1.0
  * https://github.com/ltoinel/domogeeek
  *
- * Copyright 2014 DomoGeeek
+ * Copyright 2014 ZWave2MQTT
  * Released under the Apache License 2.0 (Apache-2.0)
  * 
  * @desc: Configuration file for the ZwaveBus
@@ -14,7 +14,7 @@ var config = {};
 //Debug
 config.debug = true;
 
-//Message Broker 
+// MQTT Message Broker 
 config.mqtt = {};
 config.mqtt.uri = "mqtt://192.168.1.2";
 config.mqtt.options = {
@@ -22,7 +22,7 @@ config.mqtt.options = {
 //password: 'APassword',
 keepalive: 20,
 clean: true,
-clientId: 'domogeeek'
+clientId: 'zwave2mqtt'
 };
 
 // Zwavebus

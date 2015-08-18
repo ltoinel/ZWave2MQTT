@@ -1,7 +1,7 @@
 /**
- * DomoGeeek v1.0 https://github.com/ltoinel/domogeeek
+ * ZWave2MQTT v1.0 https://github.com/ltoinel/ZWave2MQTT
  * 
- * Copyright 2014 DomoGeeek Released under the Apache License 2.0 (Apache-2.0)
+ * Copyright 2015 Released under the Apache License 2.0 (Apache-2.0)
  * 
  * @desc: Abstract module implementation
  * @author: ltoinel@free.fr

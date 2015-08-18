@@ -1,7 +1,7 @@
 /**
- * DomoGeeek v1.0 https://github.com/ltoinel/domogeeek
+ * ZWave2MQTT v1.0 https://github.com/ltoinel/ZWave2MQTT
  * 
- * Copyright 2014 DomoGeeek Released under the Apache License 2.0 (Apache-2.0)
+ * Copyright 2015 Released under the Apache License 2.0 (Apache-2.0)
  * 
  * @desc: Event handler for the ZwaveBus
  * @author: ltoinel@free.fr
@@ -56,7 +56,7 @@ exports.onEvent = function(nodeid, value) {
 
         // We publish the value on the MQTT broker
         zwaveBus.client.publish(command, message);
-}
+};
 
 /*
  * When a new value is added.
