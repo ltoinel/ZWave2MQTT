@@ -15,10 +15,19 @@ $ vi config.js
 You can enable the debug flag to analyze the messages exchanged on the network.
 
 
-## Run 
+## Test 
 
 ```sh
-$ node app.js
+$ ./start.sh
 ```
 
 By default, each family of messages are sent into specific MQTT topics (alarm, sensor ...).
+
+## Deploy 
+
+```sh
+$ sudo npm install pm2 -g
+$ ./pm2.sh
+$ pm2 startup
+$ pm2 save
+```
