@@ -1,5 +1,5 @@
 /**
- * ZWave2MQTT v1.0 https://github.com/ltoinel/ZWave2MQTT
+ * ZWave2MQTT v1.1 https://github.com/ltoinel/ZWave2MQTT
  * 
  * Copyright 2015 Released under the Apache License 2.0 (Apache-2.0)
  * 
@@ -42,7 +42,7 @@ exports.onNodeAdded = function(nodeid) {
 		name : '',
 		loc : '',
 		classes : {},
-		ready : false,
+		ready : false
 	};
 };
 

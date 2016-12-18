@@ -1,14 +1,14 @@
 /**
- * ZWave2MQTT v1.0 https://github.com/ltoinel/ZWave2MQTT
+ * ZWave2MQTT v1.1 https://github.com/ltoinel/ZWave2MQTT
  * 
- * Copyright 2015 Released under the Apache License 2.0 (Apache-2.0)
+ * Copyright 2014 DomoGeeek Released under the Apache License 2.0 (Apache-2.0)
  * 
  * @desc: ZwaveBus main app
  * @author: ltoinel@free.fr
  */
 
 // Global require
-var openZwave = require('openzwave');
+var OpenZwave = require('openzwave-shared');
 
 // Local require
 var module = require("./libs/module");
@@ -23,15 +23,15 @@ handler.init(zwaveBus);
 zwaveBus.start();
 
 // Initialize the Zwave connector
-var zwave = new openZwave(config.device, {
-	saveconfig : config.saveconfig,
-        logging : config.logging,
-        consoleoutput : config.consoleoutput,
-        suppressrefresh : config.suppressrefresh
+var zwave = new OpenZwave({
+	SaveConfig : config.saveconfig,
+        Logging : config.logging,
+        ConsoleOutput : config.consoleoutput,
+        SuppressRefresh : config.suppressrefresh
 });
 
 // Event 
-zwave.on('event', handler.onEvent);
+zwave.on('node event', handler.onEvent);
 
 // The driver is ready
 zwave.on('driver ready', handler.onDriverReady);
@@ -60,7 +60,7 @@ zwave.on('notification', handler.onNotification);
 // The scan is complete
 zwave.on('scan complete', function() {
 	handler.onScanComplete();
-	// zwave.setValue(5, 0x70, 81 , 45);
+	//zwave.setValue(8, 0x70, 5 , 255);
 });
 
 process.removeAllListeners('SIGINT');
@@ -68,10 +68,10 @@ process.removeAllListeners('SIGINT');
 // Cleaning resources on SIGINT
 process.on('SIGINT', function() {
         console.log('disconnecting...');
-        zwave.disconnect();
+        zwave.disconnect(config.device);
         process.exit();
 });
 
 // Zwave connect
-zwave.connect();
+zwave.connect(config.device);
 
