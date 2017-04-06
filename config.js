@@ -12,7 +12,7 @@
 var config = {};
 
 //Debug
-config.debug = true;
+config.debug = false;
 
 // MQTT Message Broker 
 config.mqtt = {};
@@ -27,7 +27,7 @@ clientId: 'zwave2mqtt'
 
 // Zwavebus
 config.saveconfig = false;
-config.logging =  false;
+config.logging = false;
 config.consoleoutput = true;
 config.suppressrefresh = false;
 config.device = '/dev/ttyZwaveStick';

@@ -44,9 +44,14 @@ Module.prototype = {
 		// MQTT Connection
 		this.client.on('connect', function(){
 			console.info("Connected to the MQTT broker");
-			if (callback !== undefined){
-				callback();
-			}
+			self.client.subscribe('command');
+		});
+	
+		// On message received on "command"	
+		this.client.on('message', function (topic, message) {
+			var command = JSON.parse(message.toString());
+			console.log("Command received : %s %s %s %s %s", command.nodeid, command.commandclass, command.instance, command.index, command.value);
+			callback(command);
 		});
 
 		// MQTT Close connection

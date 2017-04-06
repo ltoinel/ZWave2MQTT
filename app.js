@@ -19,8 +19,6 @@ var handler = require('./libs/handler');
 
 // Initialize the module
 var zwaveBus = new module( __dirname);
-handler.init(zwaveBus);
-zwaveBus.start();
 
 // Initialize the Zwave connector
 var zwave = new OpenZwave({
@@ -29,6 +27,14 @@ var zwave = new OpenZwave({
         ConsoleOutput : config.consoleoutput,
         SuppressRefresh : config.suppressrefresh
 });
+
+// On new command handler
+var onCommand = function(command){
+	zwave.setValue(command.nodeid, command.commandclass, command.instance, command.index, command.value);
+}
+
+handler.init(zwaveBus);
+zwaveBus.start(onCommand);
 
 // Event 
 zwave.on('node event', handler.onEvent);
@@ -60,7 +66,6 @@ zwave.on('notification', handler.onNotification);
 // The scan is complete
 zwave.on('scan complete', function() {
 	handler.onScanComplete();
-	//zwave.setValue(8, 0x70, 5 , 255);
 });
 
 process.removeAllListeners('SIGINT');
