@@ -55,7 +55,7 @@ exports.onEvent = function(nodeid, value) {
         logger.debug("Publishing : " +  command + " => " + message);
 
         // We publish the value on the MQTT broker
-        zwaveBus.client.publish(command, message);
+        zwaveBus.client.publish(zwaveBus.config.mqtt.publishPrefix + command, message);
 };
 
 /*
@@ -82,7 +82,7 @@ exports.onValueChanged = function(nodeid, comclass, value) {
 	logger.debug("Publishing : " +  command + " => " + message);
 	
 	// We publish the value on the MQTT broker
-	zwaveBus.client.publish(command, message);
+	zwaveBus.client.publish(zwaveBus.config.mqtt.publishPrefix + command, message);
 
 	if (nodes[nodeid].ready) {
 		logger.debug('node%d: value changed: %d:%s:%s->%s', nodeid, comclass,

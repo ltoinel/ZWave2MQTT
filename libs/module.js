@@ -44,14 +44,22 @@ Module.prototype = {
 		// MQTT Connection
 		this.client.on('connect', function(){
 			console.info("Connected to the MQTT broker");
-			self.client.subscribe('command');
+			self.client.subscribe(self.config.mqtt.commandTopic);
 		});
 	
 		// On message received on "command"	
 		this.client.on('message', function (topic, message) {
-			var command = JSON.parse(message.toString());
-			console.log("Command received : %s %s %s %s %s", command.nodeid, command.commandclass, command.instance, command.index, command.value);
-			callback(command);
+                        if(message) {
+                                try {
+					// Try to parse the command
+                                        var command = JSON.parse(message.toString());
+                                        console.log("Command received : %s %s %s %s %s", command.nodeid, command.commandclass, command.instance, command.index, command.value);
+                                        callback(command);
+                                } catch(e) {
+					// Failed to parse the command
+                                        console.info("Unable to parse message received: %s", message.toString());
+                                }
+                        }
 		});
 
 		// MQTT Close connection

@@ -25,6 +25,10 @@ clean: true,
 clientId: 'zwave2mqtt'
 };
 
+// MQTT Topics
+config.mqtt.commandTopic = "zwave/command"
+config.mqtt.publishPrefix = "zwave/"
+
 // Zwavebus
 config.saveconfig = false;
 config.logging = false;
