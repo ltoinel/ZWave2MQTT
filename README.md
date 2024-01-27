@@ -5,6 +5,9 @@ This module is a gateway between Z-Wave devices and the MQTT broker and takes pa
 This module is based on node-openzwave and allows you to transform Z-Wave messages into MQTT messages.
 Works perfectly on a Raspberry Pi with an Aeon Lab Z-Wave USB dongle.
 
+My post in French about this Zwave Gateway : 
+https://www.geeek.org/zwave2mqtt-objets-connectes-zwave-185/
+
 ## Prerequisites
 
 Compile OpenZwave
